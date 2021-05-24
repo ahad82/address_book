@@ -62,7 +62,6 @@ class AddressBook
      */
     public static function getAll()
     {
-
         return Store::getAll();
     }
 
