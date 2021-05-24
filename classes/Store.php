@@ -3,13 +3,15 @@ namespace classes;
 
 /**
  * Class Store
+ * A loosely coupled, File storage class
+ *
  * @package classes
  */
 class Store
 {
 
     /**
-     *
+     * The directory
      */
     const STORE_REPOSITORY = "store";
 
@@ -32,11 +34,6 @@ class Store
         }
         $this->storeRepository = $storeRepository;
         $this->fileName = $storeRepository . "/{$storeName}{$ext}";
-    }
-
-    public function setFileStoreDir($dir)
-    {
-
     }
 
     /**

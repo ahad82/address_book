@@ -5,7 +5,8 @@ use classes\AddressBook;
 class AddressBookTest extends TestCase
 {
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->mockData = [
             [
                 ["name" => "bob"],
@@ -43,7 +44,8 @@ class AddressBookTest extends TestCase
     /**
      *
      */
-    public function testGetUnique(){
+    public function testGetUnique()
+    {
         $mock = $this->getMockBuilder(AddressBook::class)
             ->disableOriginalConstructor()
             ->getMock();

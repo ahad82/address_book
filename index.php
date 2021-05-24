@@ -1,10 +1,11 @@
 <?php
 use classes\AddressBook;
 use classes\Store;
+
 //auto loader
 spl_autoload_register(function ($class_name) {
     $class_name = str_replace('\\', '/', $class_name);
-    require_once ("{$class_name}.php");
+    require_once("{$class_name}.php");
 });
 
 /**
@@ -16,7 +17,7 @@ spl_autoload_register(function ($class_name) {
 
 /**
  * Raw mocked up inputs
- * 
+ *
  */
 AddressBook::saveDetails("book1", "bob", "123445");
 AddressBook::saveDetails("book1", "marry", "123445");
@@ -32,9 +33,11 @@ displayAll($results);
 $result = AddressBook::getUnique();
 displayUniqueResult($result);
 
-
-
-function displayUniqueResult($result) {
+/**
+ * @param $result - Keeping the view part separate
+ */
+function displayUniqueResult($result)
+{
     echo "------------------------------------\n";
     echo "Here are people unique to address books::\n";
     foreach ($result as $key => $value) {
@@ -42,17 +45,21 @@ function displayUniqueResult($result) {
     }
 }
 
-function displayAll($results) {
+/**
+ * @param $results - Keeping the view part separate
+ */
+function displayAll($results)
+{
 
     echo "------------------------------------\n";
     echo "List of people in the address books\n";
-    
+
     foreach ($results as $addressBook) {
-        foreach($addressBook as $personDetails) {
+        foreach ($addressBook as $personDetails) {
             echo "Name: " . $personDetails["name"] . " || Phone Number: " . $personDetails["phoneNumber"] . "\n";
         }
     }
-    
+
 }
 
 ?>
