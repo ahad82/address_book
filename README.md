@@ -1,5 +1,5 @@
 # Address book manager
-A basic command line app with mocked up data to save/retrieve records
+A basic command line app with mocked up data to save/retrieve records,
 Data is persisted as json object in a file, a file represents an address book. e.g. store/book1.json
 
 ## Installation
