@@ -31,13 +31,23 @@ class AddressBook
         return new static();
     }
 
+
     /**
-     * @param $bookName -Address book name
+     * @param $bookName
      * @param $personName
      * @param $phoneNumber
+     * @throws \Exception
      */
     public static function saveDetails($bookName, $personName, $phoneNumber)
     {
+        $bookName = filter_var($bookName, FILTER_SANITIZE_STRING);
+        $personName = filter_var($personName, FILTER_SANITIZE_STRING);
+        $phoneNumber = filter_var($phoneNumber, FILTER_SANITIZE_STRING);
+
+        $arr = [$bookName, $personName, $phoneNumber];
+        if (in_array("", $arr) || in_array(null, $arr)) {
+            throw new \Exception("invalid data provided");
+        }
 
         $obj = static::getInstance();
         $obj->save($bookName, $personName, $phoneNumber);
@@ -71,7 +81,7 @@ class AddressBook
     public static function getUnique()
     {
         $uniquelist = [];
-        $addressBooks = self::getAll();
+        $addressBooks = static::getAll();
         foreach ($addressBooks as $k => $addressBook) {
             foreach ($addressBook as $person) {
                 $foundCounter = static::inArrayMulti($person["name"], $addressBooks);
@@ -96,7 +106,7 @@ class AddressBook
 
         foreach ($haystack as $key => $value) {
             if (is_array($value)) {
-                $foundCounter = self::inArrayMulti($needle, $value, $foundCounter);
+                $foundCounter = static::inArrayMulti($needle, $value, $foundCounter);
             } else
                 if (trim($value) === trim($needle)) {
                     $foundCounter++;

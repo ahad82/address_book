@@ -1,6 +1,39 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use classes\AddressBook;
+use classes\Store;
+
+/**
+ * Class mockAddressBook
+ * mock class
+ */
+class mockAddressBook extends AddressBook {
+
+    /**
+     * @param $storeRepository - overridden function to return mocked data
+     * @return array
+     */
+    public static function getAll()
+    {
+        return [
+            [
+                ["name" => "bob"],
+                ["name" => "jane"],
+                ["name" => "marry"]
+            ],
+            [
+                ["name" => "rob"],
+                ["name" => "jane"],
+                ["name" => "marry"]
+            ],
+            [
+                ["name" => "alice"],
+                ["name" => "jane"],
+                ["name" => "marry"]
+            ]
+        ];
+    }
+}
 
 class AddressBookTest extends TestCase
 {
@@ -11,19 +44,17 @@ class AddressBookTest extends TestCase
             [
                 ["name" => "bob"],
                 ["name" => "jane"],
-                ["name" => "marry"],
+                ["name" => "marry"]
             ],
             [
                 ["name" => "rob"],
                 ["name" => "jane"],
-                ["name" => "marry"],
-
+                ["name" => "marry"]
             ],
             [
                 ["name" => "alice"],
                 ["name" => "jane"],
-                ["name" => "marry"],
-
+                ["name" => "marry"]
             ]
         ];
 
@@ -46,14 +77,7 @@ class AddressBookTest extends TestCase
      */
     public function testGetUnique()
     {
-        $mock = $this->getMockBuilder(AddressBook::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $mock->method('getAll')
-            ->willReturn($this->mockData);
-
-        $ret = AddressBook::getUnique();
-
+        $ret = mockAddressBook::getUnique();
         $this->assertEquals($ret["bob"], 1);
         $this->assertEquals($ret["alice"], 1);
     }

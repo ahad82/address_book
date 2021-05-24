@@ -1,0 +1,36 @@
+[
+  [
+    {
+      "address_book": "book1",
+      "person_name": "Bob",
+      "phone_number": "1234566"
+    },
+    {
+      "address_book": "book1",
+      "person_name": "Marry",
+      "phone_number": "1234567"
+    },
+    {
+      "address_book": "book1",
+      "person_name": "Jane",
+      "phone_number": "1234568"
+    }
+  ],
+  [
+    {
+      "address_book": "book2",
+      "person_name": "Alice",
+      "phone_number": "1234569"
+    },
+    {
+      "address_book": "book2",
+      "person_name": "Marry",
+      "phone_number": "1234570"
+    },
+    {
+      "address_book": "book2",
+      "person_name": "Jane",
+      "phone_number": "12345671"
+    }
+  ]
+]

@@ -2,6 +2,9 @@
 A basic command line app with mocked up data to save/retrieve records,
 Data is persisted as json object in a file, a file represents an address book. e.g. store/book1.json
 
+# Input data
+Input data is already provided as part of input/input.json
+
 ## Installation
 ```bash
 1- git clone https://github.com/ahad82/catch_project.git

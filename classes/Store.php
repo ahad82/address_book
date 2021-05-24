@@ -102,7 +102,7 @@ class Store
 
         $allRecords = [];
         foreach ($files as $file) {
-            $store = self::getInstance($file, $storeRepository);
+            $store = static::getInstance($file, $storeRepository);
             $masterRecord = file_get_contents($store->fileName);
             $masterRecord = json_decode($masterRecord, true);
             array_push($allRecords, $masterRecord);

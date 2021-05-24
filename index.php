@@ -15,29 +15,34 @@ spl_autoload_register(function ($class_name) {
 @unlink("store/book1.json");
 @unlink("store/book2.json");
 
+$inputData = file_get_contents("input/input.json");
+$inputData = json_decode($inputData, true);
+
+saveDetails($inputData);
+displayAll();
+displayUniqueResult();
+
 /**
- * Raw mocked up inputs
+ * @param $inputData
+ */
+function saveDetails($inputData)
+{
+    if (empty($inputData)) {
+        return false;
+    }
+    foreach ($inputData as $addressBook) {
+        foreach ($addressBook as $details) {
+            AddressBook::saveDetails($details["address_book"], $details["person_name"], $details["phone_number"]);
+        }
+    }
+}
+
+/**
  *
  */
-AddressBook::saveDetails("book1", "bob", "123445");
-AddressBook::saveDetails("book1", "marry", "123445");
-AddressBook::saveDetails("book1", "jane", "123445");
-
-AddressBook::saveDetails("book2", "alice", "123445");
-AddressBook::saveDetails("book2", "marry", "123445");
-AddressBook::saveDetails("book2", "jane", "123445");
-
-$results = AddressBook::getAll();
-displayAll($results);
-
-$result = AddressBook::getUnique();
-displayUniqueResult($result);
-
-/**
- * @param $result - Keeping the view part separate
- */
-function displayUniqueResult($result)
+function displayUniqueResult()
 {
+    $result = AddressBook::getUnique();
     echo "------------------------------------\n";
     echo "Here are people unique to address books::\n";
     foreach ($result as $key => $value) {
@@ -46,11 +51,11 @@ function displayUniqueResult($result)
 }
 
 /**
- * @param $results - Keeping the view part separate
+ *
  */
-function displayAll($results)
+function displayAll()
 {
-
+    $results = AddressBook::getAll();
     echo "------------------------------------\n";
     echo "List of people in the address books\n";
 
