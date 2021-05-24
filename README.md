@@ -16,5 +16,5 @@ php index.php
 
 ## Unit tests
 ```python
-vendor/bin/phpunit --bootstrap tests/customAutoLoad.php tests/classes/AddressBookTest.php
+vendor/bin/phpunit --bootstrap tests/customAutoLoad.php tests/classes
 ```
