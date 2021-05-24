@@ -73,11 +73,7 @@ class Store
         array_push($masterRecord, $arrayData);
         $masterRecord = json_encode($masterRecord);
 
-        if (file_put_contents($store->fileName, $masterRecord)) {
-            return True;
-        } else {
-            return False;
-        }
+        return file_put_contents($store->fileName, $masterRecord);
 
     }
 

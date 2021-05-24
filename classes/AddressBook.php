@@ -93,6 +93,7 @@ class AddressBook
     }
 
     /**
+     * A recursive function to search multi dimensional arrays
      * @param $needle
      * @param $haystack
      * @param int $foundCounter
