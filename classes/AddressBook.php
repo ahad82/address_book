@@ -44,11 +44,6 @@ class AddressBook
         $personName = filter_var($personName, FILTER_SANITIZE_STRING);
         $phoneNumber = filter_var($phoneNumber, FILTER_SANITIZE_STRING);
 
-        $arr = [$bookName, $personName, $phoneNumber];
-        if (in_array("", $arr) || in_array(null, $arr)) {
-            throw new \Exception("invalid data provided");
-        }
-
         $obj = static::getInstance();
         $obj->save($bookName, $personName, $phoneNumber);
     }
